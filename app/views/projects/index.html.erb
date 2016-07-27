@@ -1,0 +1,26 @@
+<h2 class="pull-left">All Projects</h2>
+<h3 class="pull-right">
+<%= link_to new_project_url do %>
+  <span class="glyphicon glyphicon-plus"></span>
+<% end %>
+</h3>
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Outcome</th>
+    <th>Due Date</th>
+    <th>Due Time</th>
+    <th>Completed</th>
+  </tr>
+  <% current_user.projects.each do |project| %>
+  <tr>
+    <td><%= project.id %></td>
+    <td><%= project.name %></td>
+    <td><%= project.outcome %></td>
+    <td><%= project.due_date %></td>
+    <td><%= project.due_time %></td>
+    <td><%= project.completed %></td>
+  </tr>
+  <% end %>
+<table>
