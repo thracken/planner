@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
-  def new
-    @project = Project.new
+  def index
+    @projects = Project.all
   end
 
   def create
@@ -14,7 +14,15 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def new
+    @project = Project.new
+  end
+
   def edit
+    @project = Project.find(params[:id])
+  end
+
+  def show
     @project = Project.find(params[:id])
   end
 
@@ -26,14 +34,6 @@ class ProjectsController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def index
-    @projects = Project.all
-  end
-
-  def show
-    @project = Project.find(params[:id])
   end
 
   private
