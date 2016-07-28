@@ -1,0 +1,8 @@
+<h2><%= @project.name %></h2>
+<p><%= @project.outcome %></p>
+<p>Due: <%= "#{@project.due_date} at #{@project.due_time}" %></p>
+<p>Completed: <%= @project.completed %> </p>
+<br />
+<p>Actions:</p>
+
+<%= link_to "<-- Back to Projects", projects_url %>
