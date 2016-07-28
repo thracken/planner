@@ -12,12 +12,12 @@
 
   <div class="form-group">
     <%= f.label :due_date, class: 'control-label col-md-3' %>
-    <div><%= f.date_select :due_date %></div>
+    <div><%= f.date_select :due_date, prompt: true %></div>
   </div>
 
   <div class="form-group">
     <%= f.label :due_time, class: 'control-label col-md-3' %>
-    <div><%= f.time_select :due_time %></div>
+    <div><%= f.time_select :due_time, prompt: true %></div>
   </div>
 
   <div class="form-group">

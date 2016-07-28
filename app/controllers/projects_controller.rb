@@ -5,8 +5,10 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project.user_id = current_user.id
     if @project.save
-
+      flash[:success] = "Project added!"
+      redirect_to projects_url
     else
       render 'new'
     end
@@ -25,6 +27,6 @@ class ProjectsController < ApplicationController
 
   private
     def project_params
-      params.require(:project).permit(:name, :outcome, :due_date, :due_time, :completed, :user_id)
+      params.require(:project).permit(:name, :outcome, :due_date, :due_time, :completed)
     end
 end
