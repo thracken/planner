@@ -1,4 +1,10 @@
-<h2><%= @project.name %></h2>
+<h2><%= @project.name %>
+<small>
+<%= link_to edit_project_url do %>
+  <span class="glyphicon glyphicon-pencil"></span>
+<% end %>
+</small>
+</h2>
 <p><%= @project.outcome %></p>
 <p>Due: <%= "#{@project.due_date} at #{@project.due_time}" %></p>
 <p>Completed: <%= @project.completed %> </p>
