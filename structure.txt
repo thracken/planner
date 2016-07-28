@@ -4,13 +4,6 @@ Users
 :password [presence, length] - string
 has_many ideas, projects, actions, appointments
 
-Notes - Polymorphic
-:title [presence] - string
-:body [presence] - text
-::convert to project
-::convert to action
-belongs_to user, ideas, projects, actions, appointments
-
 Projects
 :name [presence] - string
 :outcome [presence] - string
@@ -26,6 +19,13 @@ Actions
 :completed [] - boolean
 :context [presence] - string, selectlist
 belongs_to projects, user
+
+Notes - Polymorphic
+:title [presence] - string
+:body [presence] - text
+::convert to project
+::convert to action
+belongs_to user, ideas, projects, actions, appointments
 
 Appointments
 :name [presence] - string

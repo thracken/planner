@@ -16,7 +16,7 @@
   <% current_user.projects.each do |project| %>
   <tr>
     <td><%= project.id %></td>
-    <td><%= project.name %></td>
+    <td><%= link_to project.name, project_url(project) %></td>
     <td><%= project.outcome %></td>
     <td><%= project.due_date %></td>
     <td><%= project.due_time %></td>
