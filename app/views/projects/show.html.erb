@@ -1,9 +1,13 @@
 <h2><%= @project.name %>
 <small>
 <%= link_to edit_project_url do %>
-  <span class="glyphicon glyphicon-pencil"></span>
+  <span class="glyphicon glyphicon-pencil" title='Edit'></span>
+<% end %>
+<%= link_to project_url, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }  do %>
+  <span class='glyphicon glyphicon-remove' title='Delete'>
 <% end %>
 </small>
+
 </h2>
 <p><%= @project.outcome %></p>
 <p>Due: <%= "#{@project.due_date} at #{@project.due_time}" %></p>

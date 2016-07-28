@@ -27,5 +27,7 @@
 
   <div class="form-group">
     <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <%= link_to "Delete", project_url, method: :delete, class: "btn btn-primary", data: { confirm: "Are you sure? This cannot be undone." } %>
   </div>
+
 <% end %>
