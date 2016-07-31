@@ -14,7 +14,7 @@ has_many actions
 belongs_to user
 
 Actions
-:body [presence] - string
+:text [presence] - string
 :due_date [] - date
 :completed [] - boolean
 :context [presence] - string, selectlist
