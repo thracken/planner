@@ -3,4 +3,5 @@ class Project < ActiveRecord::Base
   validates :outcome, presence: true
 
   belongs_to :user
+  has_many :actions
 end

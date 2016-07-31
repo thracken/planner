@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 10, maximum: 255}, allow_nil: true
   has_secure_password
   has_many :projects
+  has_many :actions, through: :projects
 
   def User.new_token
     SecureRandom.urlsafe_base64
