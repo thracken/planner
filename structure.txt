@@ -16,8 +16,9 @@ belongs_to user
 Actions
 :text [presence] - string
 :due_date [] - date
+:due_time [] - time
 :completed [] - boolean
-:context [presence] - string, selectlist
+:context [] - string, selectlist
 belongs_to projects, user
 
 Notes - Polymorphic
