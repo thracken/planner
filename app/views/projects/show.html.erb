@@ -2,9 +2,12 @@
 <small>
 <%= link_to edit_project_url do %>
   <span class="glyphicon glyphicon-pencil" title='Edit this Project'></span>
-<% end %>
+<% end %> 
 <%= link_to project_url, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }  do %>
   <span class='glyphicon glyphicon-remove' title='Delete this Project'>
+<% end %>
+<%= link_to new_project_note_url(@project) do %>
+  <span class='glyphicon glyphicon-edit' title='Add a Note'>
 <% end %>
 </small>
 

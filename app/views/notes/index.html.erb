@@ -5,3 +5,29 @@
   <% end %>
   </small>
 </h2>
+
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Attached to:</th>
+
+  </tr>
+  <% @notes.each do |note| %>
+  <tr>
+    <td><%= note.id %></td>
+    <td><%= note.title %></td>
+    <td><%= note.body %></td>
+    <td>
+      <% if note.notable.class == User %>
+          --
+      <% elsif note.notable.class == Project %>
+          <%= link_to note.notable.name, project_url(note.notable) %>
+      <% elsif note.notable.class == Action %>
+          <%= link_to note.notable.name, project_action_url(note.notable) %>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+<table>
