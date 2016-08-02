@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160731002600) do
+ActiveRecord::Schema.define(version: 20160802173653) do
 
   create_table "actions", force: :cascade do |t|
     t.string   "text"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 20160731002600) do
   end
 
   add_index "actions", ["project_id"], name: "index_actions_on_project_id"
+
+  create_table "notes", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "notable_id"
+    t.string   "notable_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
