@@ -1,0 +1,21 @@
+<h2>All Actions</h2>
+<table class="table table-striped">
+  <tr>
+    <th>Completed</th>
+    <th>Action</th>
+    <th>Context</th>
+    <th>Due Date</th>
+    <th>Due Time</th>
+    <th>Project</th>
+  </tr>
+  <% current_user.actions.each do |action| %>
+  <tr>
+    <td><%= check_box_tag "checkbox", "completed", checked=action.completed %></td>
+    <td><%= action.text %></td>
+    <td><%= action.context %></td>
+    <td><%= action.due_date %></td>
+    <td><%= action.due_time %></td>
+    <td><%= link_to action.project.name, project_url(action.project) %></td>
+  </tr>
+  <% end %>
+<table>
