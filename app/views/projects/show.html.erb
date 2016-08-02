@@ -34,7 +34,9 @@
       <%= link_to edit_project_action_url(@project, action) do %>
         <span class="glyphicon glyphicon-pencil" title='Edit this Action'></span>
       <% end %>
-      <span class='glyphicon glyphicon-remove' title='Delete this Project'>
+      <%= link_to project_action_url(@project, action), method: :delete, data: { confirm: "Are you sure? This cannot be undone." } do %>
+        <span class='glyphicon glyphicon-remove' title='Delete this Project'>
+      <% end %>
     </td>
     <td><%= action.completed %></td>
     <td><%= action.text %></td>

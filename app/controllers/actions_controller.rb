@@ -40,9 +40,10 @@ class ActionsController < ApplicationController
   end
 
   def destroy
+    @project = Project.find(params[:project_id])
     Action.find(params[:id]).destroy
     flash[:success] = "Action deleted."
-    redirect_to actions_url
+    redirect_to @project
   end
 
   private
