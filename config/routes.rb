@@ -4,9 +4,14 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
-  resources :users
+  resources :users do
+    resources :notes
+  end
   resources :projects do
-    resources :actions
+    resources :actions do
+      resources :notes
+    end
+    resources :notes
   end
   get '/actions' => 'actions#index'
 

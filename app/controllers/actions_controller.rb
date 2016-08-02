@@ -5,7 +5,7 @@ class ActionsController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
-    @action = @project.actions.build(action_params)
+    @action = @project.actions.new(action_params)
     if @action.save
       flash[:success] = "Action saved."
       redirect_to @project
@@ -16,7 +16,7 @@ class ActionsController < ApplicationController
 
   def new
     @project = Project.find(params[:project_id])
-    @action = @project.actions.build
+    @action = @project.actions.new
   end
 
   def edit
