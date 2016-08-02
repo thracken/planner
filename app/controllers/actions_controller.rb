@@ -4,18 +4,19 @@ class ActionsController < ApplicationController
   end
 
   def create
-    @action = Action.new(action_params)
-    #something for project_id here
+    @project = Project.find(params[:project_id])
+    @action = @project.actions.build(action_params)
     if @action.save
       flash[:success] = "Action saved."
-      redirect_to actions_url
+      redirect_to @project
     else
       render 'new'
     end
   end
 
   def new
-    @action = Action.new
+    @project = Project.find(params[:project_id])
+    @action = @project.actions.build
   end
 
   def edit
@@ -44,6 +45,6 @@ class ActionsController < ApplicationController
 
   private
     def action_params
-      params.require(:action).permit(:text,:due_date,:due_time,:completed,:context)
+      params.require(:project_new_action).permit(:text,:due_date,:due_time,:completed,:context)
     end
 end

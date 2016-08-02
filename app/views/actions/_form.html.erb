@@ -1,0 +1,33 @@
+<%= form_for [@project, @action] , as: :project_new_action do |f| %>
+  <div class="form-group">
+    <%= f.label :text, class: 'control-label col-md-3' %>
+    <div><%= f.text_field :text %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :context, class: 'control-label col-md-3' %>
+    <div><%= f.text_field :context %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :due_date, class: 'control-label col-md-3' %>
+    <div><%= f.date_select :due_date, prompt: true %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :due_time, class: 'control-label col-md-3' %>
+    <div><%= f.time_select :due_time, prompt: true %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :completed, class: 'control-label col-md-3' %>
+    <div><%= f.check_box :completed %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <% if !@action.new_record? %>
+      <%= link_to "Delete", project_action_url, method: :delete, class: "btn btn-primary", data: { confirm: "Are you sure? This cannot be undone." } %>
+    <% end %>
+  </div>
+<% end %>
