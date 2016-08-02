@@ -1,0 +1,18 @@
+<%= form_for [@notable, @note], as: :notable_new_note do |f| %>
+  <div class="form-group">
+    <%= f.label :title, class: 'control-label' %>
+    <div><%= f.text_field :title %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body, class: 'control-label' %>
+    <div><%= f.text_area :body %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <% if !@note.new_record? %>
+      <%= link_to "Delete", project_action_url, method: :delete, class: "btn btn-primary", data: { confirm: "Are you sure? This cannot be undone." } %>
+    <% end %>
+  </div>
+<% end %>

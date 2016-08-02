@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :notes
   end
   get '/actions' => 'actions#index'
+  get '/notes' => 'notes#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

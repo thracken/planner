@@ -1,14 +1,19 @@
 class NotesController < ApplicationController
   def index
+    @notable = find_notable
     @notes = Note.all
   end
 
   def create
     @notable = find_notable
-    @note = @notable.comment.new(note_params)
+    @note = @notable.notes.new(note_params)
     if @note.save
       flash[:success] = "Note saved!"
-      redirect_to @notable
+      if @notable.class == User
+        redirect_to notes_url
+      else
+        redirect_to @notable
+      end
     else
       render 'new'
     end
@@ -16,7 +21,7 @@ class NotesController < ApplicationController
 
   def new
     @notable = find_notable
-    @note = @notable.comment.new
+    @note = @notable.notes.new
   end
 
   def edit
@@ -34,7 +39,11 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
     if @note.update_attributes(note_params)
       flash[:success] = "Note updated."
-      redirect_to @notable
+      if @notable.class == User
+        redirect_to notes_url
+      else
+        redirect_to @notable
+      end
     else
       render 'edit'
     end
@@ -49,7 +58,7 @@ class NotesController < ApplicationController
 
   private
     def note_params
-      params.require(:note).permit(:title,:body)
+      params.require(:notable_new_note).permit(:title,:body)
     end
 
     def find_notable
