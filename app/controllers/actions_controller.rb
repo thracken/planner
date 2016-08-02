@@ -20,6 +20,7 @@ class ActionsController < ApplicationController
   end
 
   def edit
+    @project = Project.find(params[:project_id])
     @action = Action.find(params[:id])
   end
 
@@ -28,10 +29,11 @@ class ActionsController < ApplicationController
   end
 
   def update
+    @project = Project.find(params[:project_id])
     @action = Action.find(params[:id])
     if @action.update_attributes(action_params)
       flash[:success] = "Action updated."
-      redirect_to @action
+      redirect_to @project
     else
       render 'edit'
     end

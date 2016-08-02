@@ -30,7 +30,12 @@
   </tr>
   <% @project.actions.each do |action| %>
   <tr>
-    <td><span class="glyphicon glyphicon-pencil" title='Edit this Action'></span><span class='glyphicon glyphicon-remove' title='Delete this Project'></td>
+    <td>
+      <%= link_to edit_project_action_url(@project, action) do %>
+        <span class="glyphicon glyphicon-pencil" title='Edit this Action'></span>
+      <% end %>
+      <span class='glyphicon glyphicon-remove' title='Delete this Project'>
+    </td>
     <td><%= action.completed %></td>
     <td><%= action.text %></td>
     <td><%= action.context %></td>
