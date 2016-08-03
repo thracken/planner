@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   include NotesHelper
-  
+
   def index
     @notable = find_notable
     @notes = get_all_notes(current_user)
@@ -55,7 +55,7 @@ class NotesController < ApplicationController
     @notable = find_notable
     Note.find(params[:id]).destroy
     flash[:success] = "Note deleted."
-    redirect_to @project
+    redirect_to :back
   end
 
   private
