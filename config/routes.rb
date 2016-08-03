@@ -8,13 +8,16 @@ Rails.application.routes.draw do
     resources :notes
   end
   resources :projects do
-    resources :actions do
-      resources :notes
-    end
+    resources :actions
     resources :notes
   end
+  resources :actions do
+    resources :notes
+  end
+  resources :notes
   get '/actions' => 'actions#index'
   get '/notes' => 'notes#index'
+  post '/notes' => 'notes#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -23,9 +23,9 @@
       <% if note.notable.class == User %>
           --
       <% elsif note.notable.class == Project %>
-          <%= link_to note.notable.name, project_url(note.notable) %>
+          P: <%= link_to note.notable.name, project_url(note.notable) %>
       <% elsif note.notable.class == Action %>
-          <%= link_to note.notable.name, project_action_url(note.notable) %>
+          A: <%= link_to note.notable.name, project_action_url(note) %>
       <% end %>
     </td>
   </tr>
