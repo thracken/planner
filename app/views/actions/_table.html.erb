@@ -1,0 +1,30 @@
+<table class="table table-striped">
+  <tr>
+    <th>Completed</th>
+    <th>Action</th>
+    <th>Context</th>
+    <th>Due Date</th>
+    <th>Due Time</th>
+    <th>Edit</th>
+  </tr>
+  <% object.actions.each do |action| %>
+  <tr>
+    <td><%= action.completed %></td>
+    <td><%= action.text %></td>
+    <td><%= action.context %></td>
+    <td><%= action.due_date %></td>
+    <td><%= action.due_time %></td>
+    <td>
+      <%= link_to edit_project_action_url(object, action) do %>
+        <span class="glyphicon glyphicon-pencil" title='Edit this Action'></span>
+      <% end %>
+      <%= link_to project_action_url(object, action), method: :delete, data: { confirm: "Are you sure? This cannot be undone." } do %>
+        <span class='glyphicon glyphicon-remove' title='Delete this Project'>
+      <% end %>
+      <%= link_to new_project_action_note_url(object, action) do %>
+        <span class="glyphicon glyphicon-edit" title='Add a Note to this action'></span>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>

@@ -2,7 +2,7 @@
 <small>
 <%= link_to edit_project_url do %>
   <span class="glyphicon glyphicon-pencil" title='Edit this Project'></span>
-<% end %> 
+<% end %>
 <%= link_to project_url, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }  do %>
   <span class='glyphicon glyphicon-remove' title='Delete this Project'>
 <% end %>
@@ -16,38 +16,12 @@
 <p>Due: <%= "#{@project.due_date} at #{@project.due_time}" %></p>
 <p>Completed: <%= @project.completed %> </p>
 <br />
+
 <p>Actions:
 <%= link_to new_project_action_url(@project) do %>
   <span class="glyphicon glyphicon-plus" title="Add a new Action"></span>
 <% end %>
 </p>
 
-<table class="table table-striped">
-  <tr>
-    <th>Edit</th>
-    <th>Completed</th>
-    <th>Action</th>
-    <th>Context</th>
-    <th>Due Date</th>
-    <th>Due Time</th>
-  </tr>
-  <% @project.actions.each do |action| %>
-  <tr>
-    <td>
-      <%= link_to edit_project_action_url(@project, action) do %>
-        <span class="glyphicon glyphicon-pencil" title='Edit this Action'></span>
-      <% end %>
-      <%= link_to project_action_url(@project, action), method: :delete, data: { confirm: "Are you sure? This cannot be undone." } do %>
-        <span class='glyphicon glyphicon-remove' title='Delete this Project'>
-      <% end %>
-    </td>
-    <td><%= action.completed %></td>
-    <td><%= action.text %></td>
-    <td><%= action.context %></td>
-    <td><%= action.due_date %></td>
-    <td><%= action.due_time %></td>
-  </tr>
-  <% end %>
-</table>
-
+<%= render 'actions/table', object: @project, as: 'object' %>
 <%= link_to "<-- Back to all Projects", projects_url %>
