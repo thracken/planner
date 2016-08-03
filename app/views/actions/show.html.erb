@@ -6,7 +6,7 @@
 <%= link_to project_action_url, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }  do %>
   <span class='glyphicon glyphicon-remove' title='Delete this Action'>
 <% end %>
-<%= link_to new_project_action_note_url(@project, @action) do %>
+<%= link_to new_action_note_url(@project, @action) do %>
   <span class='glyphicon glyphicon-edit' title='Add a Note'>
 <% end %>
 </small>
@@ -18,7 +18,7 @@
 <br />
 
 <p>Notes:
-<%= link_to new_project_action_note_url(@project, @action) do %>
+<%= link_to new_action_note_url(@project, @action) do %>
   <span class="glyphicon glyphicon-plus" title="Add a new Note"></span>
 <% end %>
 </p>

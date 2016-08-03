@@ -21,7 +21,7 @@
       <%= link_to project_action_url(object, action), method: :delete, data: { confirm: "Are you sure? This cannot be undone." } do %>
         <span class='glyphicon glyphicon-remove' title='Delete this Project'>
       <% end %>
-      <%= link_to new_project_action_note_url(object, action) do %>
+      <%= link_to new_action_note_url(object, action) do %>
         <span class="glyphicon glyphicon-edit" title='Add a Note to this action'></span>
       <% end %>
     </td>

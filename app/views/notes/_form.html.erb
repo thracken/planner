@@ -1,8 +1,4 @@
-<% if @notable.class == Action %>
-  <%= form_for [@notable.project, @notable, @note], as: :notable_new_note do |f| %>
-<% else %>
-  <%= form_for [@notable, @note], as: :notable_new_note do |f| %>
-<% end %>
+<%= form_for [@notable, @note], as: :notable_new_note do |f| %>
   <div class="form-group">
     <%= f.label :title, class: 'control-label' %>
     <div><%= f.text_field :title %></div>
