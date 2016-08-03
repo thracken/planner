@@ -25,6 +25,7 @@ class ActionsController < ApplicationController
   end
 
   def show
+    @project = Project.find(params[:project_id])
     @action = Action.find(params[:id])
   end
 

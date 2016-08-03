@@ -10,7 +10,7 @@
   <% object.actions.each do |action| %>
   <tr>
     <td><%= action.completed %></td>
-    <td><%= action.text %></td>
+    <td><%= link_to action.text, project_action_url(object, action) %></td>
     <td><%= action.context %></td>
     <td><%= action.due_date %></td>
     <td><%= action.due_time %></td>
