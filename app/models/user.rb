@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :actions, through: :projects
   has_many :notes, :as => :notable
+  
 
   def User.new_token
     SecureRandom.urlsafe_base64

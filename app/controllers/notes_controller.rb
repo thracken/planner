@@ -1,7 +1,9 @@
 class NotesController < ApplicationController
+  include NotesHelper
+  
   def index
     @notable = find_notable
-    @notes = Note.all
+    @notes = get_all_notes(current_user)
   end
 
   def create
