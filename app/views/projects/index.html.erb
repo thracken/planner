@@ -1,27 +1,30 @@
-<h2>All Projects
-<small>
-<%= link_to new_project_url do %>
-  <span class="glyphicon glyphicon-plus"></span>
-<% end %>
-</small>
-</h2>
-<table class="table table-striped">
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Outcome</th>
-    <th>Due Date</th>
-    <th>Due Time</th>
-    <th>Completed</th>
-  </tr>
-  <% current_user.projects.each do |project| %>
-  <tr>
-    <td><%= project.id %></td>
-    <td><%= link_to project.name, project_url(project) %></td>
-    <td><%= project.outcome %></td>
-    <td><%= project.due_date %></td>
-    <td><%= project.due_time %></td>
-    <td><%= project.completed %></td>
-  </tr>
+<h2 class="top-header">All Projects
+  <small class="form-inline">
+    <input type="text" class="form-control" id="projects-filter" placeholder="Filter By...">
+  </small>
+  <%= link_to new_project_url do %>
+    <button class="btn btn-default pull-right">
+      <span class="glyphicon glyphicon-plus"></span>
+    </button>
   <% end %>
+</h2>
+<% current_user.projects.each do |project| %>
+<div class="panel panel-default">
+  <div class="panel-heading project-title">
+    <span class="glyphicon glyphicon-check completed-<%= project.completed %>"></span> -
+    <h4><%= link_to project.name, project_url(project) %> |
+      <small><%= project.outcome %></small>
+    </h4>
+    <div class="due-at pull-right">
+      <button data-container="body" data-toggle="popover" data-placement="left" data-content="Due <%= project.due_date %> at <%= project.due_time %>" data-trigger="focus">
+        <span class="glyphicon glyphicon-time" title="Due <%= project.due_date %> at <%= project.due_time %>"></span>
+      </button>
+    </div>
+  </div>
+  <div class="panel-body">
+
+  </div>
+</div>
+<% end %>
+
 <table>

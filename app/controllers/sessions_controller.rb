@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       log_user_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       remember user
-      redirect_to root_url
+      redirect_to projects_url
     else
       flash.now[:danger] = "Invalid login info. Please try again."
       render 'new'
