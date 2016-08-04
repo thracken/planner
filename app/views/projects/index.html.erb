@@ -9,21 +9,27 @@
   <% end %>
 </h2>
 <% current_user.projects.each do |project| %>
-<div class="panel panel-default">
+<div class="panel panel-default project">
   <div class="panel-heading project-title">
     <span class="glyphicon glyphicon-check completed-<%= project.completed %>"></span> -
     <h4><%= link_to project.name, project_url(project) %> |
       <small><%= project.outcome %></small>
     </h4>
-    <div class="due-at pull-right">
-      <button data-container="body" data-toggle="popover" data-placement="left" data-content="Due <%= project.due_date %> at <%= project.due_time %>" data-trigger="focus">
-        <span class="glyphicon glyphicon-time" title="Due <%= project.due_date %> at <%= project.due_time %>"></span>
-      </button>
-    </div>
+    <span class="due-at pull-right">
+      Due <%= project.due_date %> at <%= project.due_time %>
+    </span>
   </div>
-  <div class="panel-body">
-
-  </div>
+  <ul class="list-group">
+  <% project.actions.each do |action| %>
+    <li class="list-group-item action">
+      <%= check_box_tag("action-#{action.text}", action.completed, action.completed) %> <%= action.text %>
+      <span class="due-at pull-right">
+        <span class="label label-default"><%= action.context %></span>
+        Due <%= action.due_date %> at <%= action.due_time %>
+      </span>
+    </li>
+  <% end%>
+  </ul>
 </div>
 <% end %>
 
