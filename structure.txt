@@ -35,3 +35,8 @@ Appointments
 :end_time [] - time
 :repeating [] - boolean
 belongs_to user
+
+Bootstrap Icons
+Project: glyphicon glyphicon-folder-open
+Action: glyphicon glyphicon-ok
+Note: glyphicon glyphicon-file
