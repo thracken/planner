@@ -1,12 +1,15 @@
 <h2 class="top-header">All Projects
-  <small class="form-inline">
-    <input type="text" class="form-control" id="projects-filter" placeholder="Filter By...">
-  </small>
-  <%= link_to new_project_url do %>
-    <button class="btn btn-default pull-right">
-      <span class="glyphicon glyphicon-plus"></span>
+  <span class="pull-right">
+    <small class="form-inline">
+      <input type="text" class="form-control" id="projects-filter" placeholder="Filter Projects...">
+      </small>
+    <button class="btn btn-default">
+      <%= link_to new_project_url do %>
+        <span class="glyphicon glyphicon-plus"></span>
+      <% end %>
     </button>
-  <% end %>
+  </span>
+
 </h2>
 <% current_user.projects.each do |project| %>
 <div class="panel panel-default project">
@@ -18,7 +21,7 @@
       </h4>
       <span class="due-at pull-right">
         Due <%= project.due_date %> at <%= project.due_time %>
-        <span class="glyphicon glyphicon-chevron-right" title="Notes" ></span>
+        <span class="glyphicon glyphicon-chevron-right" title="See details on this Project" ></span>
       </span>
     <% end #div %>
   <% end #link to project %>
@@ -26,7 +29,7 @@
   <ul class="list-group">
   <% project.actions.each do |action| %>
     <li class="list-group-item action">
-      <%= check_box_tag("action-#{action.text}", action.completed, action.completed) %> <%= action.text %>
+      <span class="glyphicon glyphicon-check completed-<%= action.completed %>"></span> <%= action.text %>
       <span class="due-at pull-right">
         <span class="label label-default"><%= action.context %></span>
         Due <%= action.due_date %> at <%= action.due_time %>

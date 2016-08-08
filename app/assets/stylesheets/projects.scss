@@ -1,6 +1,21 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h2.top-header{
+  margin: 0 0 10px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #eeeeee;
+  small{
+    padding: 5px 0;
+  }
+  p{
+    font-size: 15px;
+    margin: 0;
+    padding: 10px 0;
+  }
+}
+
 .project{
   a:hover{
     text-decoration: none;
@@ -9,22 +24,55 @@
 
 .project-title{
   color: #333333;
-  background-color: #f5f5f5;
+  background-color: #e8e8e8;
   border-color: #ddd;
   h4{
     display: inline;
-  }
-  .completed-true{
-    color: #5cb85c;
-  }
-  .completed-false{
-    color: #aaa;
   }
   .glyphicon-chevron-right{
     display: none;
   }
 }
 
+.actions-list{
+  .panel-heading{
+    background-color: #e8e8e8;
+    border-color: #ddd;
+  }
+}
+
+.completed-true{
+  color: #5cb85c;
+}
+.completed-false{
+  color: #a94442;
+}
+
 .due-at{
   display: inline;
+}
+
+.list-group{
+  li:nth-child(odd){
+    background-color: #fff;
+  }
+  li:nth-child(even){
+    background-color: #f5f5f5;
+  }
+  .list-group-item{
+    padding: 10px 15px 10px 30px;
+  }
+}
+
+.dropdown {
+  background:#fff;
+  width:300px;
+  ul.dropdown-menu {
+      border-radius:4px;
+      box-shadow:none;
+      margin-top:20px;
+      width:300px;
+      content: "";
+      position: absolute;
+  }
 }

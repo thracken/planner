@@ -1,27 +1,62 @@
-<h2><%= @project.name %>
-<small>
-<%= link_to edit_project_url do %>
-  <span class="glyphicon glyphicon-pencil" title='Edit this Project'></span>
-<% end %>
-<%= link_to project_url, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }  do %>
-  <span class='glyphicon glyphicon-remove' title='Delete this Project'>
-<% end %>
-<%= link_to new_project_note_url(@project,@note) do %>
-  <span class='glyphicon glyphicon-edit' title='Add a Note'>
-<% end %>
-</small>
+<h2 class="top-header"><%= @project.name %>
+  <div class="pull-right">
+    <small class="form-inline">
+      <input type="text" class="form-control" id="projects-filter" placeholder="Filter Actions...">
+    </small>
 
+    <span class="dropdown">
+      <button class="btn btn-default dropdown-toggle" id="project-options" type="button" data-toggle="dropdown" title="Project Options">
+        <span class="glyphicon glyphicon-option-horizontal"></span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-right">
+        <li>
+          <%= link_to edit_project_url do %>
+            Edit this Project <span class="glyphicon glyphicon-pencil pull-right" title='Edit this Project' ></span>
+          <% end %>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to project_url, method: :delete, data: { confirm: "Are you sure? This cannot be undone." } do %>
+            Delete this Project <span class='glyphicon glyphicon-remove pull-right' title='Delete this Project'>
+          <% end %>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to new_project_note_url(@project,@note) do %>
+            Add a Note <span class='glyphicon glyphicon-edit pull-right' title='Add a Note'>
+          <% end %>
+        </li>
+      </ul>
+    </span>
+
+    <p class="text-right">Due <%= "#{@project.due_date} at #{@project.due_time}" %></p>
+  </div>
+
+  <br />
+  <small><%= @project.outcome %> | Completed: <%= @project.completed %></small>
 </h2>
-<p><%= @project.outcome %></p>
-<p>Due: <%= "#{@project.due_date} at #{@project.due_time}" %></p>
-<p>Completed: <%= @project.completed %> </p>
-<br />
 
-<p>Actions:
-<%= link_to new_project_action_url(@project) do %>
-  <span class="glyphicon glyphicon-plus" title="Add a new Action"></span>
-<% end %>
-</p>
+<div class="panel panel-default actions-list">
+  <div class="panel-heading">
+    Actions:
+    <%= link_to new_project_action_url(@project) do %>
+      <span class="glyphicon glyphicon-plus" title="Add a new Action"></span>
+    <% end %>
+  </div>
+  <ul class="list-group">
+  <% @project.actions.each do |action| %>
+    <li class="list-group-item action">
+      <span class="glyphicon glyphicon-check completed-<%= action.completed %>"></span> <%= action.text %>
+      <span class="due-at pull-right">
+        <span class="label label-default"><%= action.context %></span>
+        Due <%= action.due_date %> at <%= action.due_time %>
+        <%= link_to action_url(action) do %>
+          <span class="glyphicon glyphicon-chevron-right" title="Notes"></span>
+        <% end %>
+      </span>
+    </li>
+  <% end #actions iterator %>
+  </ul>
+</div
 
-<%= render 'actions/table', object: @project, as: 'object' %>
 <%= link_to "<-- Back to all Projects", projects_url %>

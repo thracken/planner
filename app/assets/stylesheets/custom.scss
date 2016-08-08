@@ -1,26 +1,11 @@
-@import "bootstrap";
 @import "bootstrap-sprockets";
+@import "bootstrap";
 
 body{
   padding-top: 70px;
 }
 
-.checkbox {
-  margin-top: -10px;
-  margin-bottom: 10px;
-  span {
-    margin-left: 20px;
-    font-weight: normal;
-  }
-}
-
 #session_remember_me {
   width: auto;
   margin-left: 0;
-}
-
-h2.top-header{
-    margin: 0 0 10px;
-    padding-bottom: 9px;
-    border-bottom: 1px solid #eeeeee;
 }
