@@ -5,6 +5,8 @@
 ready = ->
   $(".project-title").hover ->
     $(this).find(".glyphicon-chevron-right").toggle()
+  $(".list-group-item").hover ->
+    $(this).find(".glyphicon-chevron-right").toggle()
 
 $(document).ready(ready)
 $(document).on('ready turbolinks:load', ready)
