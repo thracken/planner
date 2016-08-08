@@ -37,10 +37,12 @@
 </h2>
 
 <div class="panel panel-default actions-list">
-  <div class="panel-heading">
-    Actions:
+  <div class="panel-heading text-center">
+    <h3>Actions</h3>
     <%= link_to new_project_action_url(@project) do %>
-      <span class="glyphicon glyphicon-plus" title="Add a new Action"></span>
+    <button class="btn btn-default pull-right">
+      New <span class="glyphicon glyphicon-plus" title="Add a new Action"></span>
+    </button>
     <% end %>
   </div>
   <ul class="list-group">
