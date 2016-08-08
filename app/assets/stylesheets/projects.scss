@@ -1,8 +1,16 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.project{
+  a:hover{
+    text-decoration: none;
+  }
+}
 
 .project-title{
+  color: #333333;
+  background-color: #f5f5f5;
+  border-color: #ddd;
   h4{
     display: inline;
   }
@@ -11,6 +19,9 @@
   }
   .completed-false{
     color: #aaa;
+  }
+  .glyphicon-chevron-right{
+    display: none;
   }
 }
 

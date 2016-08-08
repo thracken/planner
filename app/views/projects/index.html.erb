@@ -10,15 +10,19 @@
 </h2>
 <% current_user.projects.each do |project| %>
 <div class="panel panel-default project">
-  <div class="panel-heading project-title">
-    <span class="glyphicon glyphicon-check completed-<%= project.completed %>"></span> -
-    <h4><%= link_to project.name, project_url(project) %> |
-      <small><%= project.outcome %></small>
-    </h4>
-    <span class="due-at pull-right">
-      Due <%= project.due_date %> at <%= project.due_time %>
-    </span>
-  </div>
+  <%= link_to project_url(project) do %>
+    <%= content_tag :div, class: "panel-heading project-title", :title => "Go to this Project" do %>
+      <span class="glyphicon glyphicon-check completed-<%= project.completed %>"></span> -
+      <h4><%= project.name %> |
+        <small><%= project.outcome %></small>
+      </h4>
+      <span class="due-at pull-right">
+        Due <%= project.due_date %> at <%= project.due_time %>
+        <span class="glyphicon glyphicon-chevron-right" title="Notes" ></span>
+      </span>
+    <% end #div %>
+  <% end #link to project %>
+
   <ul class="list-group">
   <% project.actions.each do |action| %>
     <li class="list-group-item action">
@@ -26,11 +30,14 @@
       <span class="due-at pull-right">
         <span class="label label-default"><%= action.context %></span>
         Due <%= action.due_date %> at <%= action.due_time %>
+        <%= link_to action_url(action) do %>
+          <span class="glyphicon glyphicon-chevron-right" title="Notes"></span>
+        <% end %>
       </span>
     </li>
-  <% end%>
+  <% end #actions iterator %>
   </ul>
 </div>
-<% end %>
+<% end #projects iterator %>
 
 <table>
