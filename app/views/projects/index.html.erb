@@ -33,7 +33,7 @@
       <span class="due-at pull-right">
         <span class="label label-default"><%= action.context %></span>
         Due <%= action.due_date %> at <%= action.due_time %>
-        <%= link_to action_url(action) do %>
+        <%= link_to project_action_url(project, action) do %>
           <span class="glyphicon glyphicon-chevron-right" title="Notes"></span>
         <% end %>
       </span>
