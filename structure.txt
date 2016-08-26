@@ -18,8 +18,13 @@ Actions
 :due_date [] - date
 :due_time [] - time
 :completed [] - boolean
-:context [] - string, selectlist
-belongs_to projects, user
+belongs_to project, user
+has_many contexts
+
+Contexts
+:name [presence] - string
+:color - string
+belongs_to action
 
 Notes - Polymorphic
 :title [presence] - string

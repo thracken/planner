@@ -2,23 +2,21 @@
   <span class="pull-right">
     <small class="form-inline">
       <input type="text" class="form-control" id="projects-filter" placeholder="Filter Projects...">
-      </small>
+    </small>
     <button class="btn btn-default">
       <%= link_to new_project_url do %>
         <span class="glyphicon glyphicon-plus"></span>
       <% end %>
     </button>
   </span>
-
 </h2>
+
 <% current_user.projects.each do |project| %>
 <div class="panel panel-default project">
   <%= link_to project_url(project) do %>
     <%= content_tag :div, class: "panel-heading project-title", :title => "Go to this Project" do %>
       <span class="glyphicon glyphicon-check completed-<%= project.completed %>"></span> -
-      <h4><%= project.name %> |
-        <small><%= project.outcome %></small>
-      </h4>
+      <h4><%= project.name %> | <small><%= project.outcome %></small></h4>
       <span class="due-at pull-right">
         Due <%= project.due_date %> at <%= project.due_time %>
         <span class="glyphicon glyphicon-chevron-right" title="See details on this Project" ></span>
